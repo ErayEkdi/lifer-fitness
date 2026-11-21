@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeR Fitness Center | İlkadım, Samsun Spor Salonu</title>
+  <meta name="description" content="Samsun İlkadım Saitbey'de LifeR Fitness Center. Fitness, vücut geliştirme, kardiyo ve kişisel antrenman programları." />
+  <style>
+    :root {
+      --bg: #0c0d10;
+      --bg-soft: #14161c;
+      --card: #191c24;
+      --border: #282d38;
+      --text: #f4f6f8;
+      --muted: #9aa3b2;
+      --accent: #ff5e1a;
+      --accent-dark: #e04d0e;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Üst Bilgi Barı */
+    .topbar {
+      background: #07080a;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 0;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 13, 16, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .brand-title span {
+      color: var(--accent);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-accent:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 56px 0 48px;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 94, 26, 0.15), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(255, 94, 26, 0.08), transparent 45%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 94, 26, 0.14);
+      color: var(--accent);
+      border: 1px solid rgba(255, 94, 26, 0.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 24px;
+      max-width: 540px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Hızlı Bilgi Kartı */
+    .lead-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .lead-card h2 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .lead-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #d6dde6;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .copy-note {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      min-height: 18px;
+    }
+
+    /* Bölümler */
+    section {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    /* Filtre Butonları */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    /* Kart Grid */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 94, 26, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .card-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .card-action {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Saatler ve Konum */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .hours-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .hours-list li:last-child {
+      border-bottom: none;
+    }
+
+    .closed-day {
+      color: var(--muted);
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Yüzen Arama Butonu */
+    .floating-cta {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(255, 94, 26, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      z-index: 60;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .grid-3,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Üst Bilgi -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Saitbey, Aka Gç. No:4 • İlkadım / Samsun</span>
+      <span>Hafta İçi 10:00–22:00 • Tel: (0362) 432 48 07</span>
+    </div>
+  </div>
+
+  <!-- Menü -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-title">LIFE<span>R</span></span>
+        <span class="brand-sub">Fitness Center • İlkadım</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#programlar">Programlar</a>
+        <a href="#neden-biz">Avantajlar</a>
+        <a href="#iletisim">Saatler & İletişim</a>
+      </nav>
+      <a href="tel:+903624324807" class="btn btn-accent">
+        Hemen Ara
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">İlkadım Merkez • Saitbey, Samsun</div>
+        <h1>Disiplinini Kur, <span>LifeR</span> ile Formunu Zirveye Taşı</h1>
+        <p>
+          İlkadım merkezdeki ulaşımı kolay konumumuz, modern ağırlık ve kardiyo ekipmanlarımız ve hedefe yönelik antrenman düzenimizle sporu hayatının parçası yap.
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#programlar" class="btn btn-accent">Programları İncele</a>
+          <a href="https://instagram.com/lifergymstudio" target="_blank" rel="noopener" class="btn btn-outline">Instagram: @lifergymstudio</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>10:00 – 22:00</strong>
+            <span>Hafta İçi Açık</span>
+          </div>
+          <div class="stat">
+            <strong>10:00 – 20:00</strong>
+            <span>Cumartesi Açık</span>
+          </div>
+          <div class="stat">
+            <strong>Merkezi Konum</strong>
+            <span>Saitbey / İlkadım</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hızlı Bilgi Formu -->
+      <div class="lead-card">
+        <h2>Hızlı Üyelik Bilgisi</h2>
+        <p>Hedefini seç, tek tıkla telefonla ara veya Instagram DM üzerinden bilgi iste.</p>
+
+        <form id="infoForm">
+          <div class="form-group">
+            <label for="hedef">İlgilendiğiniz Alan</label>
+            <select id="hedef" class="form-control">
+              <option value="Fitness & Vücut Geliştirme">Fitness & Vücut Geliştirme</option>
+              <option value="Kilo Verme & Kardiyo">Kilo Verme & Kardiyo</option>
+              <option value="Fonksiyonel Antrenman">Fonksiyonel Antrenman</option>
+              <option value="Kişisel Antrenman Programı">Kişisel Antrenman Programı</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sure">Üyelik Tercihi</label>
+            <select id="sure" class="form-control">
+              <option value="Aylık Üyelik">Aylık Üyelik</option>
+              <option value="3 Aylık Paket">3 Aylık Paket</option>
+              <option value="6 Aylık / Yıllık Paket">6 Aylık / Yıllık Paket</option>
+              <option value="Salonu Görmek İstiyorum">Salonu Görmek İstiyorum</option>
+            </select>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="tel:+903624324807" class="btn btn-accent w-full">
+              Telefonla Ara: (0362) 432 48 07
+            </a>
+            <button type="submit" class="btn btn-outline w-full">
+              Instagram DM'den Sor (@lifergymstudio) →
+            </button>
+          </div>
+          <div class="copy-note" id="copyNote"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programlar -->
+  <section id="programlar">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Antrenman Alanları & Programlar</h2>
+          <p>Hedefine göre çalışma alanını incele.</p>
+        </div>
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Tümü</button>
+          <button class="filter-btn" data-filter="fitness">Fitness</button>
+          <button class="filter-btn" data-filter="kardiyo">Kardiyo</button>
+          <button class="filter-btn" data-filter="program">Özel Program</button>
+        </div>
+      </div>
+
+      <div class="grid-3" id="programCards">
+        <div class="card" data-category="fitness">
+          <div>
+            <div class="card-tag">Güç & Hacim</div>
+            <h3>Ağırlık & Vücut Geliştirme</h3>
+            <p>Serbest ağırlıklar ve izole istasyonlarla her seviyeye uygun güvenli ve etkili kas geliştirme alanı.</p>
+          </div>
+          <a class="card-action" href="tel:+903624324807">Bilgi Al →</a>
+        </div>
+
+        <div class="card" data-category="kardiyo">
+          <div>
+            <div class="card-tag">Yağ Yakımı</div>
+            <h3>Kardiyo & Kondisyon</h3>
+            <p>Dayanıklılığını artırmak ve kilo kontrolü sağlamak için düzenli kardiyo ve tempolu antrenman ekipmanları.</p>
+          </div>
+          <a class="card-action" href="tel:+903624324807">Bilgi Al →</a>
+        </div>
+
+        <div class="card" data-category="program">
+          <div>
+            <div class="card-tag">Kişiye Özel</div>
+            <h3>Başlangıç & Takip Programı</h3>
+            <p>Spora yeni başlayanlar için doğru form, hareket tekniği ve sürdürülebilir haftalık antrenman planlaması.</p>
+          </div>
+          <a class="card-action" href="https://instagram.com/lifergymstudio" target="_blank" rel="noopener">Instagram'dan Sor →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neden Biz -->
+  <section id="neden-biz" style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Neden LifeR Fitness Center?</h2>
+          <p>İlkadım'da düzenli spor yapmayı kolaylaştıran atmosfer</p>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <h3>İlkadım Merkezde</h3>
+          <p>Saitbey Mahallesi Aka Geçidi'ndeki merkezi konumumuzla toplu taşımaya ve ana caddelere yürüme mesafesindeyiz.</p>
+        </div>
+        <div class="card">
+          <h3>Ferah & Düzenli Salon</h3>
+          <p>Bakımlı ekipmanlar, düzenli çalışma alanı ve motive edici salon atmosferiyle antrenmanından tam verim al.</p>
+        </div>
+        <div class="card">
+          <h3>Doğrudan İletişim</h3>
+          <p>Üyelik paketleri ve güncel kampanyalar için tek tıkla telefonla ulaşabilir veya Instagram'dan yazabilirsin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Saatler ve İletişim -->
+  <section id="iletisim">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Çalışma Saatleri & İletişim</h2>
+          <p>Salonu yerinde görmek veya üyelik bilgisi almak için bize ulaşın.</p>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="card">
+          <h3>Çalışma Saatlerimiz</h3>
+          <ul class="hours-list">
+            <li><span>Pazartesi – Cuma</span><span>10:00 – 22:00</span></li>
+            <li><span>Cumartesi</span><span>10:00 – 20:00</span></li>
+            <li class="closed-day"><span>Pazar</span><span>Kapalı</span></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>Adres & İletişim</h3>
+            <p style="margin-top:10px;">
+              <strong>Adres:</strong><br />
+              Saitbey, Aka Gç. No:4<br />
+              İlkadım / Samsun
+            </p>
+            <p>
+              <strong>Telefon:</strong> (0362) 432 48 07<br />
+              <strong>Instagram:</strong> @lifergymstudio
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a href="tel:+903624324807" class="btn btn-accent">Telefonla Ara</a>
+            <a href="https://instagram.com/lifergymstudio" target="_blank" rel="noopener" class="btn btn-outline">Instagram'a Git</a>
+            <button type="button" class="btn btn-outline" id="copyAddressBtn">Adresi Kopyala</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 LifeR Fitness Center İlkadım / Samsun — Tüm Hakları Saklıdır.
+    </div>
+  </footer>
+
+  <!-- Yüzen Arama Butonu -->
+  <a class="floating-cta" href="tel:+903624324807">
+    Ara: (0362) 432 48 07
+  </a>
+
+  <script>
+    // Kategori Filtreleme
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#programCards .card');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          card.style.display = (filter === 'all' || category === filter) ? 'flex' : 'none';
+        });
+      });
+    });
+
+    // Instagram DM için hazır mesaj kopyalama + yönlendirme
+    document.getElementById('infoForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const hedef = document.getElementById('hedef').value;
+      const sure = document.getElementById('sure').value;
+      const mesaj = `Merhaba, LifeR Fitness Center web sitenizden ulaşıyorum. "${hedef}" (${sure}) hakkında bilgi alabilir miyim?`;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(mesaj).catch(() => {});
+      }
+      document.getElementById('copyNote').textContent = 'Mesaj kopyalandı, Instagram profiline yönlendiriliyorsunuz...';
+      setTimeout(() => {
+        window.open('https://instagram.com/lifergymstudio', '_blank');
+      }, 600);
+    });
+
+    // Adres Kopyalama
+    document.getElementById('copyAddressBtn').addEventListener('click', function () {
+      const adres = 'Saitbey, Aka Gç. No:4, İlkadım / Samsun';
+      navigator.clipboard.writeText(adres).then(() => {
+        const eskiYazi = this.textContent;
+        this.textContent = 'Adres Kopyalandı ✓';
+        setTimeout(() => {
+          this.textContent = eskiYazi;
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
